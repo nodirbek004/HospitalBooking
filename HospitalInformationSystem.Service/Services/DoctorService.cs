@@ -111,13 +111,19 @@ public class DoctorService : IDoctorService
         {
             result.Add(mapper.Map<DoctorResultDTO>(doctor));
         }
-
-        return new Responce<IEnumerable<DoctorResultDTO>>
+        
+        var response = new Responce<IEnumerable<DoctorResultDTO>>
         {
             StatusCode = 200,
             Message = "Success",
             Data = result
         };
+        if(response.Data == null)
+        {
+            response.StatusCode = 404;
+            response.Message = "Not Found";
+        }
+        return response;        
     }
 
     public async Task<Responce<DoctorResultDTO>> GetByIdAsync(long id)

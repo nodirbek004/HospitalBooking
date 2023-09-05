@@ -140,6 +140,7 @@ public class AppointmentService : IAppointmentService
             Message = "Success",
             Data = result
         };
+        
     }
 
     public async Task<Responce<IEnumerable<AppointmentResultDTO>>> GetBySpecifyingDate(DateTime date)

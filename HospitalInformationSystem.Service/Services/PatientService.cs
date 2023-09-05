@@ -21,7 +21,7 @@ public class PatientService : IPatientService
         this.unitOfWork = new UnitOfWork();
 
         this.mapper = new Mapper(new MapperConfiguration(
-                cfg => cfg.AddProfile<MappingProfile>()
+                cfg => cfg.AddProfile<MappingProfile>() 
             ));
     }
 

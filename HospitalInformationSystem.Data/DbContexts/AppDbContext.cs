@@ -21,3 +21,4 @@ public class AppDbContext : DbContext
     public DbSet<MedicalRecordEntity> MedicalRecords { get; set; }
     public DbSet<AppointmentEntity> Appointments { get; set; }
 }
+

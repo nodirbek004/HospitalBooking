@@ -15,7 +15,7 @@ public class Repository<T> : IRepository<T> where T : Auditable
         appDbContext = new AppDbContext();
         dbSet = appDbContext.Set<T>();
     }
-
+    
     public async Task<T> CreateAsync(T entity)
     { 
         var temp= (await dbSet.AddAsync(entity)).Entity;
@@ -25,7 +25,7 @@ public class Repository<T> : IRepository<T> where T : Auditable
     public void Delete(T entity)
     {
         dbSet.Remove(entity);
-    }
+    }        
 
     public IQueryable<T> GetAll()
         => dbSet.AsQueryable();
