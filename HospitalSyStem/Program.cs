@@ -1,5 +1,7 @@
+using HospitalInformationSystem.Data.DbContexts;
 using HospitalInformationSystem.Service.Interfaces;
 using HospitalInformationSystem.Service.Services;
+using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -10,7 +12,13 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddTransient<IDoctorService, DoctorService>();
+
+
+builder.Services.AddDbContext<AppDbContext>(options => options.UseNpgsql(
+    builder.Configuration.GetConnectionString("PostgresqlConnection")
+    ));
 var app = builder.Build();
+
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())

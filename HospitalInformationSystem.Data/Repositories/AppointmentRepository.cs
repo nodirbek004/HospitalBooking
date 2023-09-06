@@ -2,6 +2,7 @@
 using HospitalInformationSystem.Data.IRepositories;
 using HospitalInformationSystem.Data.Repositories.Commons;
 using HospitalInformationSystem.Domain.Entities.Appointments;
+using Microsoft.EntityFrameworkCore;
 
 namespace HospitalInformationSystem.Data.Repositories;
 
@@ -9,9 +10,9 @@ public class AppointmentRepository : Repository<AppointmentEntity>, IAppointment
 {
     private readonly AppDbContext appDbContext;
 
-    public AppointmentRepository()
+    public AppointmentRepository(DbContextOptions<AppDbContext> options)
     {
-        this.appDbContext = new AppDbContext();
+        this.appDbContext = new AppDbContext(options);
     }
     public IQueryable<AppointmentEntity> GetBySpecifyingDate(DateTime date)
         => appDbContext.Appointments.Where(a => a.SpecifyingDate.Equals(date));

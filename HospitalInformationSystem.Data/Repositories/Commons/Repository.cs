@@ -10,9 +10,9 @@ public class Repository<T> : IRepository<T> where T : Auditable
     private readonly AppDbContext appDbContext;
     private readonly DbSet<T> dbSet;
 
-    public Repository()
+    public Repository(DbContextOptions<AppDbContext>options)
     {
-        appDbContext = new AppDbContext();
+        appDbContext = new AppDbContext(options);
         dbSet = appDbContext.Set<T>();
     }
     
