@@ -8,11 +8,9 @@ namespace HospitalInformationSystem.Data.Repositories;
 
 public class AppointmentRepository : Repository<AppointmentEntity>, IAppointmentRepository
 {
-    private readonly AppDbContext appDbContext;
 
-    public AppointmentRepository(DbContextOptions<AppDbContext> options)
+    public AppointmentRepository(AppDbContext options):base(options)
     {
-        this.appDbContext = new AppDbContext(options);
     }
     public IQueryable<AppointmentEntity> GetBySpecifyingDate(DateTime date)
         => appDbContext.Appointments.Where(a => a.SpecifyingDate.Equals(date));

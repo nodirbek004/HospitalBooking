@@ -8,13 +8,13 @@ public class UnitOfWork : IUnitOfWork
 {
     private readonly AppDbContext appDbContext;
 
-    public UnitOfWork() 
-    { 
-        appDbContext = new AppDbContext();
-        AppointmentRepository = new AppointmentRepository();
-        DoctorRepository = new DoctorRepository();
-        MedicalRecordRepository = new MedicalRecordRepository();
-        PatientRepository = new PatientRepository();
+    public UnitOfWork(AppDbContext dbContext) 
+    {
+        appDbContext = dbContext;
+        AppointmentRepository = new AppointmentRepository(dbContext);
+        DoctorRepository = new DoctorRepository(dbContext);
+        MedicalRecordRepository = new MedicalRecordRepository(dbContext);
+        PatientRepository = new PatientRepository(dbContext);
     }
 
     public IAppointmentRepository AppointmentRepository { get; }

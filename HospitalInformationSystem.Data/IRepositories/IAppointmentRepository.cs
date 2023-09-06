@@ -1,5 +1,4 @@
-﻿using Azure;
-using HospitalInformationSystem.Data.IRepositories.Commons;
+﻿using HospitalInformationSystem.Data.IRepositories.Commons;
 using HospitalInformationSystem.Domain.Entities.Appointments;
 
 namespace HospitalInformationSystem.Data.IRepositories;

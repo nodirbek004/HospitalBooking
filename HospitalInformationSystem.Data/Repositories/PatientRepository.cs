@@ -8,11 +8,9 @@ namespace HospitalInformationSystem.Data.Repositories;
 
 public class PatientRepository : Repository<PatientEntity>, IPatientRepository
 {
-    private readonly AppDbContext appDbContext;
 
-    public PatientRepository()
+    public PatientRepository(AppDbContext appdb) :base(appdb)
     {
-        this.appDbContext = new AppDbContext();
     }
 
     public async Task<PatientEntity> GetByTelNumber(string telNumber)

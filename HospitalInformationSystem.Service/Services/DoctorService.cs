@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using HospitalInformationSystem.Data.DbContexts;
 using HospitalInformationSystem.Data.IRepositories.Commons;
 using HospitalInformationSystem.Data.Repositories.Commons;
 using HospitalInformationSystem.Domain.Entities.Doctors;
@@ -17,9 +18,9 @@ public class DoctorService : IDoctorService
 
     private readonly IUnitOfWork unitOfWork;
 
-    public DoctorService()
+    public DoctorService(AppDbContext dbContext)
     {
-        this.unitOfWork = new UnitOfWork();
+        this.unitOfWork = new UnitOfWork(dbContext);
 
         this.mapper = new Mapper(new MapperConfiguration(
                 cfg => cfg.AddProfile<MappingProfile>()

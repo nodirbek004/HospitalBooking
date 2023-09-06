@@ -16,9 +16,9 @@ public class PatientService : IPatientService
 
     private readonly IUnitOfWork unitOfWork;
 
-    public PatientService()
+    public PatientService(AppDbContext dbContext)
     {
-        this.unitOfWork = new UnitOfWork();
+        this.unitOfWork = new UnitOfWork(dbContext);
 
         this.mapper = new Mapper(new MapperConfiguration(
                 cfg => cfg.AddProfile<MappingProfile>() 

@@ -10,8 +10,9 @@ namespace HospitalInformationSystem.Data.Repositories;
 public class DoctorRepository : Repository<DoctorEntity>, IDoctorRepository
 {
 
-    public DoctorRepository(AppDbContext appDbContext):base(appDbContext)
+    public DoctorRepository(AppDbContext dbContext) : base(dbContext)
     {
+
     }
 
     public async Task<DoctorEntity> GetByTelNumberAsync(string telNumber)

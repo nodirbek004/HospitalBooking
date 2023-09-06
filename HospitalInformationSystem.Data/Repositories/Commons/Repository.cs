@@ -7,12 +7,12 @@ namespace HospitalInformationSystem.Data.Repositories.Commons;
 
 public class Repository<T> : IRepository<T> where T : Auditable
 {
-    private readonly AppDbContext appDbContext;
-    private readonly DbSet<T> dbSet;
+    protected readonly AppDbContext appDbContext;
+    protected readonly DbSet<T> dbSet;
 
-    public Repository(DbContextOptions<AppDbContext>options)
+    public Repository(AppDbContext appDbContext)
     {
-        appDbContext = new AppDbContext(options);
+        this.appDbContext = appDbContext;
         dbSet = appDbContext.Set<T>();
     }
     

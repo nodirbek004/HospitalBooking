@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using HospitalInformationSystem.Data.DbContexts;
 using HospitalInformationSystem.Data.IRepositories.Commons;
 using HospitalInformationSystem.Data.Repositories.Commons;
 using HospitalInformationSystem.Domain.Entities.MedicalRecords;
@@ -8,6 +9,7 @@ using HospitalInformationSystem.Service.DTOs.Patients;
 using HospitalInformationSystem.Service.Helpers;
 using HospitalInformationSystem.Service.Interfaces;
 using HospitalInformationSystem.Service.Mappers;
+using Microsoft.EntityFrameworkCore;
 
 namespace HospitalInformationSystem.Service.Services;
 
@@ -17,9 +19,9 @@ public class MedicalRecordService : IMedicalRecordService
 
     private readonly IUnitOfWork unitOfWork;
 
-    public MedicalRecordService()
+    public MedicalRecordService(AppDbContext dbContext)
     {
-        this.unitOfWork = new UnitOfWork();
+        this.unitOfWork = new UnitOfWork(dbContext);
 
         this.mapper = new Mapper(new MapperConfiguration(
                 cfg => cfg.AddProfile<MappingProfile>()

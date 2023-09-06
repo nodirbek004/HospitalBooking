@@ -1,4 +1,4 @@
-﻿using Azure;
+﻿
 using HospitalInformationSystem.Data.IRepositories.Commons;
 using HospitalInformationSystem.Domain.Entities.MedicalRecords;
 

@@ -7,11 +7,9 @@ namespace HospitalInformationSystem.Data.Repositories;
 
 public class MedicalRecordRepository : Repository<MedicalRecordEntity>, IMedicalRecordRepository
 {
-    private readonly AppDbContext appDbContext;
 
-    public MedicalRecordRepository()
+    public MedicalRecordRepository(AppDbContext options) : base(options)
     {
-        this.appDbContext = new AppDbContext();
     }
     public IQueryable<MedicalRecordEntity> GetByPatientId(long id)
         => appDbContext.MedicalRecords.Where(m => m.PatientId == id);
