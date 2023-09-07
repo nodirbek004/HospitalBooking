@@ -7,7 +7,7 @@ public class AppointmentUpdateDTO
 {
     public long Id { get; set; }
     public DateTime SpecifyingDate { get; set; }
-    public TimeSpan Time { get; set; }
+    public string Time { get; set; }
     public long PatientId { get; set; }
     public PatientEntity Patient { get; set; }
     public long DoctorId { get; set; }

@@ -146,7 +146,7 @@ public class AppointmentService : IAppointmentService
 
     public async Task<Responce<IEnumerable<AppointmentResultDTO>>> GetBySpecifyingDate(DateTime date)
     {
-        var appointments = unitOfWork.AppointmentRepository.GetBySpecifyingDate(date);
+        var appointments = unitOfWork.AppointmentRepository.GetBySpecifyingDate(DateTime.UtcNow);
 
         if (appointments is null)
             return new Responce<IEnumerable<AppointmentResultDTO>>

@@ -12,6 +12,6 @@ public class AppointmentRepository : Repository<AppointmentEntity>, IAppointment
     public AppointmentRepository(AppDbContext options):base(options)
     {
     }
-    public IQueryable<AppointmentEntity> GetBySpecifyingDate(DateTime date)
-        => appDbContext.Appointments.Where(a => a.SpecifyingDate.Equals(date));
+    public IQueryable<AppointmentEntity> GetBySpecifyingDate(DateTime dateTime)
+        => appDbContext.Appointments.Where(a => a.SpecifyingDate.Equals(dateTime));
 }

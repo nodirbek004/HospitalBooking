@@ -5,5 +5,5 @@ namespace HospitalInformationSystem.Data.IRepositories;
 
 public interface IAppointmentRepository:IRepository<AppointmentEntity>
 {
-    IQueryable<AppointmentEntity> GetBySpecifyingDate(DateTime date);
+    IQueryable<AppointmentEntity> GetBySpecifyingDate(DateTime dateTime);
 }
