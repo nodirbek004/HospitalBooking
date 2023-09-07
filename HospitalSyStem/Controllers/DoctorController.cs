@@ -22,7 +22,7 @@ namespace HospitalSyStem.Controllers
         {
 
             var GetDoctor = await doctorService.GetAllAsync();
-            
+
             return GetDoctor;
         }
         [HttpPost("CreateDoctor")]
@@ -31,6 +31,26 @@ namespace HospitalSyStem.Controllers
             var GetDoctor = await doctorService.CreateAsync(doctorCreationDTO);
             return GetDoctor;
         }
+        [HttpPut("UpdateDoctor")]
+        public async Task<Responce<DoctorResultDTO>> Update([FromForm] DoctorUpdateDTO doctorUpdateDTO)
+        {
+            var GetDoctor=await doctorService.UpdateAsync(doctorUpdateDTO);
+            return GetDoctor;
+
         }
+        [HttpDelete("DoctorDelete")]
+        public async Task<Responce<bool>> Delete([FromForm] long id)
+        {
+            var GetDoctor=await doctorService.DeleteAsync(id);
+            return GetDoctor;
+        }
+        [HttpGet("GetByIdDoctor")]
+        public async Task<Responce<DoctorResultDTO>> GetById([FromForm] long id)
+        {
+            var GetDoctor =await doctorService.GetByIdAsync(id);
+            return GetDoctor;
+        }
+
+    }
 }
 
